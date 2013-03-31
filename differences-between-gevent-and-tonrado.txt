@@ -1,0 +1,11 @@
+gevent and Tornado are a bit different. gevent is much more like Twisted - an asynchronous network framework, whereas Tornado is a web only framework.
+
+The main highlight of gevent is that it utilizes coroutines and makes code look like it's running synchronously, but in fact most IO blocking functions are non-blocking and return control to the gevent main loop. This is very important for IO bound programming since it allows you to write highly efficient single thread code the same way you would write multithreaded code, which is much more resource hungry.
+
+gevent also includes a WSGI request handler so it can be used to handle HTTP requests in a standalone manner, like Tornado.
+
+Tornado is an asynchronous web framework which relies on the programmer to write asynchronous code in Python, which is often a pain in the ass because there are no multiline anonymous closures or classes, like in JavaScript or Java. Therefore, writing good code using Tornado is really hard. For example, using blocking libraries becomes a pain.
+
+Indeed both frameworks are asynchronous at their core, but the resulting code looks a bit different (easier to program with gevent).
+
+You can actually use Torando and gevent together, but I haven't tried it out (yet).
