@@ -1,0 +1,12 @@
+各种代理:
+ssh port forwading:
+
+ssh -Llocalhost:1080:192.168.88.88:1080 user@anyhost(not necessary for being the 192.168.88.88)
+for examples
+ssh -L192.168.130.171:1080:192.168.120.2:7070 user@192.168.130.171
+
+SSH Proxy 4/5
+ssh -D 0.0.0.0:1080 user@anyhost
+
+combined with rsync and nc
+export RSYNC_CONNECT_PROG='nc -x192.168.90.247:1080 %H 873'

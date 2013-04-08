@@ -1,0 +1,6 @@
+snmpwalk -v 2c -c public localhost  HOST-RESOURCES-MIB::host
+snmpwalk -v 2c -c public localhost  IF-MIB::ifMIB
+snmpwalk -v 2c -c public localhost  IF-MIB::interfaces
+snmpwalk -v 2c -c public localhost  RFC1213-MIB::interfaces
+
+
