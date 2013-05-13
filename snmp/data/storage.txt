@@ -1,0 +1,71 @@
+HOST-RESOURCES-MIB::hrStorageIndex.1 1
+HOST-RESOURCES-MIB::hrStorageIndex.3 3
+HOST-RESOURCES-MIB::hrStorageIndex.6 6
+HOST-RESOURCES-MIB::hrStorageIndex.7 7
+HOST-RESOURCES-MIB::hrStorageIndex.8 8
+HOST-RESOURCES-MIB::hrStorageIndex.10 10
+HOST-RESOURCES-MIB::hrStorageIndex.31 31
+HOST-RESOURCES-MIB::hrStorageIndex.32 32
+HOST-RESOURCES-MIB::hrStorageIndex.33 33
+HOST-RESOURCES-MIB::hrStorageIndex.34 34
+HOST-RESOURCES-MIB::hrStorageIndex.35 35
+HOST-RESOURCES-MIB::hrStorageIndex.36 36
+HOST-RESOURCES-MIB::hrStorageType.1 HOST-RESOURCES-TYPES::hrStorageRam
+HOST-RESOURCES-MIB::hrStorageType.3 HOST-RESOURCES-TYPES::hrStorageVirtualMemory
+HOST-RESOURCES-MIB::hrStorageType.6 HOST-RESOURCES-TYPES::hrStorageOther
+HOST-RESOURCES-MIB::hrStorageType.7 HOST-RESOURCES-TYPES::hrStorageOther
+HOST-RESOURCES-MIB::hrStorageType.8 HOST-RESOURCES-TYPES::hrStorageOther
+HOST-RESOURCES-MIB::hrStorageType.10 HOST-RESOURCES-TYPES::hrStorageVirtualMemory
+HOST-RESOURCES-MIB::hrStorageType.31 HOST-RESOURCES-TYPES::hrStorageFixedDisk
+HOST-RESOURCES-MIB::hrStorageType.32 HOST-RESOURCES-TYPES::hrStorageFixedDisk
+HOST-RESOURCES-MIB::hrStorageType.33 HOST-RESOURCES-TYPES::hrStorageFixedDisk
+HOST-RESOURCES-MIB::hrStorageType.34 HOST-RESOURCES-TYPES::hrStorageFixedDisk
+HOST-RESOURCES-MIB::hrStorageType.35 HOST-RESOURCES-TYPES::hrStorageFixedDisk
+HOST-RESOURCES-MIB::hrStorageType.36 HOST-RESOURCES-TYPES::hrStorageFixedDisk
+HOST-RESOURCES-MIB::hrStorageDescr.1 Physical memory
+HOST-RESOURCES-MIB::hrStorageDescr.3 Virtual memory
+HOST-RESOURCES-MIB::hrStorageDescr.6 Memory buffers
+HOST-RESOURCES-MIB::hrStorageDescr.7 Cached memory
+HOST-RESOURCES-MIB::hrStorageDescr.8 Shared memory
+HOST-RESOURCES-MIB::hrStorageDescr.10 Swap space
+HOST-RESOURCES-MIB::hrStorageDescr.31 /
+HOST-RESOURCES-MIB::hrStorageDescr.32 /sys/fs/fuse/connections
+HOST-RESOURCES-MIB::hrStorageDescr.33 /dev
+HOST-RESOURCES-MIB::hrStorageDescr.34 /sys/fs/cgroup/cpuset
+HOST-RESOURCES-MIB::hrStorageDescr.35 /boot
+HOST-RESOURCES-MIB::hrStorageDescr.36 /data
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.1 1024 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.3 1024 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.6 1024 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.7 1024 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.8 1024 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.10 1024 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.31 4096 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.32 4096 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.33 4096 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.34 4096 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.35 1024 Bytes
+HOST-RESOURCES-MIB::hrStorageAllocationUnits.36 4096 Bytes
+HOST-RESOURCES-MIB::hrStorageSize.1 8172232
+HOST-RESOURCES-MIB::hrStorageSize.3 16171716
+HOST-RESOURCES-MIB::hrStorageSize.6 8172232
+HOST-RESOURCES-MIB::hrStorageSize.7 2365900
+HOST-RESOURCES-MIB::hrStorageSize.8 0
+HOST-RESOURCES-MIB::hrStorageSize.10 7999484
+HOST-RESOURCES-MIB::hrStorageSize.31 4805813
+HOST-RESOURCES-MIB::hrStorageSize.32 0
+HOST-RESOURCES-MIB::hrStorageSize.33 1019265
+HOST-RESOURCES-MIB::hrStorageSize.34 0
+HOST-RESOURCES-MIB::hrStorageSize.35 93207
+HOST-RESOURCES-MIB::hrStorageSize.36 10861358
+HOST-RESOURCES-MIB::hrStorageUsed.1 4074836
+HOST-RESOURCES-MIB::hrStorageUsed.3 4074836
+HOST-RESOURCES-MIB::hrStorageUsed.6 296344
+HOST-RESOURCES-MIB::hrStorageUsed.7 2365900
+HOST-RESOURCES-MIB::hrStorageUsed.10 0
+HOST-RESOURCES-MIB::hrStorageUsed.31 1076882
+HOST-RESOURCES-MIB::hrStorageUsed.32 0
+HOST-RESOURCES-MIB::hrStorageUsed.33 1
+HOST-RESOURCES-MIB::hrStorageUsed.34 0
+HOST-RESOURCES-MIB::hrStorageUsed.35 30611
+HOST-RESOURCES-MIB::hrStorageUsed.36 1585541

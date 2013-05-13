@@ -1,0 +1,103 @@
+HOST-RESOURCES-MIB::hrDeviceIndex.768 768
+HOST-RESOURCES-MIB::hrDeviceIndex.769 769
+HOST-RESOURCES-MIB::hrDeviceIndex.770 770
+HOST-RESOURCES-MIB::hrDeviceIndex.771 771
+HOST-RESOURCES-MIB::hrDeviceIndex.772 772
+HOST-RESOURCES-MIB::hrDeviceIndex.773 773
+HOST-RESOURCES-MIB::hrDeviceIndex.774 774
+HOST-RESOURCES-MIB::hrDeviceIndex.775 775
+HOST-RESOURCES-MIB::hrDeviceIndex.1025 1025
+HOST-RESOURCES-MIB::hrDeviceIndex.1026 1026
+HOST-RESOURCES-MIB::hrDeviceIndex.1027 1027
+HOST-RESOURCES-MIB::hrDeviceIndex.1028 1028
+HOST-RESOURCES-MIB::hrDeviceIndex.1029 1029
+HOST-RESOURCES-MIB::hrDeviceIndex.1031 1031
+HOST-RESOURCES-MIB::hrDeviceIndex.1032 1032
+HOST-RESOURCES-MIB::hrDeviceIndex.3072 3072
+HOST-RESOURCES-MIB::hrDeviceType.768 HOST-RESOURCES-TYPES::hrDeviceProcessor
+HOST-RESOURCES-MIB::hrDeviceType.769 HOST-RESOURCES-TYPES::hrDeviceProcessor
+HOST-RESOURCES-MIB::hrDeviceType.770 HOST-RESOURCES-TYPES::hrDeviceProcessor
+HOST-RESOURCES-MIB::hrDeviceType.771 HOST-RESOURCES-TYPES::hrDeviceProcessor
+HOST-RESOURCES-MIB::hrDeviceType.772 HOST-RESOURCES-TYPES::hrDeviceProcessor
+HOST-RESOURCES-MIB::hrDeviceType.773 HOST-RESOURCES-TYPES::hrDeviceProcessor
+HOST-RESOURCES-MIB::hrDeviceType.774 HOST-RESOURCES-TYPES::hrDeviceProcessor
+HOST-RESOURCES-MIB::hrDeviceType.775 HOST-RESOURCES-TYPES::hrDeviceProcessor
+HOST-RESOURCES-MIB::hrDeviceType.1025 HOST-RESOURCES-TYPES::hrDeviceNetwork
+HOST-RESOURCES-MIB::hrDeviceType.1026 HOST-RESOURCES-TYPES::hrDeviceNetwork
+HOST-RESOURCES-MIB::hrDeviceType.1027 HOST-RESOURCES-TYPES::hrDeviceNetwork
+HOST-RESOURCES-MIB::hrDeviceType.1028 HOST-RESOURCES-TYPES::hrDeviceNetwork
+HOST-RESOURCES-MIB::hrDeviceType.1029 HOST-RESOURCES-TYPES::hrDeviceNetwork
+HOST-RESOURCES-MIB::hrDeviceType.1031 HOST-RESOURCES-TYPES::hrDeviceNetwork
+HOST-RESOURCES-MIB::hrDeviceType.1032 HOST-RESOURCES-TYPES::hrDeviceNetwork
+HOST-RESOURCES-MIB::hrDeviceType.3072 HOST-RESOURCES-TYPES::hrDeviceCoprocessor
+HOST-RESOURCES-MIB::hrDeviceDescr.768 GenuineIntel: Intel(R) Xeon(R) CPU           E5405  @ 2.00GHz
+HOST-RESOURCES-MIB::hrDeviceDescr.769 GenuineIntel: Intel(R) Xeon(R) CPU           E5405  @ 2.00GHz
+HOST-RESOURCES-MIB::hrDeviceDescr.770 GenuineIntel: Intel(R) Xeon(R) CPU           E5405  @ 2.00GHz
+HOST-RESOURCES-MIB::hrDeviceDescr.771 GenuineIntel: Intel(R) Xeon(R) CPU           E5405  @ 2.00GHz
+HOST-RESOURCES-MIB::hrDeviceDescr.772 GenuineIntel: Intel(R) Xeon(R) CPU           E5405  @ 2.00GHz
+HOST-RESOURCES-MIB::hrDeviceDescr.773 GenuineIntel: Intel(R) Xeon(R) CPU           E5405  @ 2.00GHz
+HOST-RESOURCES-MIB::hrDeviceDescr.774 GenuineIntel: Intel(R) Xeon(R) CPU           E5405  @ 2.00GHz
+HOST-RESOURCES-MIB::hrDeviceDescr.775 GenuineIntel: Intel(R) Xeon(R) CPU           E5405  @ 2.00GHz
+HOST-RESOURCES-MIB::hrDeviceDescr.1025 network interface lo
+HOST-RESOURCES-MIB::hrDeviceDescr.1026 network interface eth0
+HOST-RESOURCES-MIB::hrDeviceDescr.1027 network interface eth1
+HOST-RESOURCES-MIB::hrDeviceDescr.1028 network interface br1
+HOST-RESOURCES-MIB::hrDeviceDescr.1029 network interface br0
+HOST-RESOURCES-MIB::hrDeviceDescr.1031 network interface vnet0
+HOST-RESOURCES-MIB::hrDeviceDescr.1032 network interface vnet1
+HOST-RESOURCES-MIB::hrDeviceDescr.3072 Guessing that there's a floating point co-processor
+HOST-RESOURCES-MIB::hrDeviceID.768 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.769 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.770 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.771 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.772 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.773 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.774 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.775 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.1025 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.1026 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.1027 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.1028 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.1029 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.1031 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.1032 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceID.3072 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrDeviceStatus.768 running
+HOST-RESOURCES-MIB::hrDeviceStatus.769 running
+HOST-RESOURCES-MIB::hrDeviceStatus.770 running
+HOST-RESOURCES-MIB::hrDeviceStatus.771 running
+HOST-RESOURCES-MIB::hrDeviceStatus.772 running
+HOST-RESOURCES-MIB::hrDeviceStatus.773 running
+HOST-RESOURCES-MIB::hrDeviceStatus.774 running
+HOST-RESOURCES-MIB::hrDeviceStatus.775 running
+HOST-RESOURCES-MIB::hrDeviceStatus.1025 running
+HOST-RESOURCES-MIB::hrDeviceStatus.1026 running
+HOST-RESOURCES-MIB::hrDeviceStatus.1027 running
+HOST-RESOURCES-MIB::hrDeviceStatus.1028 running
+HOST-RESOURCES-MIB::hrDeviceStatus.1029 running
+HOST-RESOURCES-MIB::hrDeviceStatus.1031 running
+HOST-RESOURCES-MIB::hrDeviceStatus.1032 running
+HOST-RESOURCES-MIB::hrDeviceErrors.1025 0
+HOST-RESOURCES-MIB::hrDeviceErrors.1026 0
+HOST-RESOURCES-MIB::hrDeviceErrors.1027 0
+HOST-RESOURCES-MIB::hrDeviceErrors.1028 0
+HOST-RESOURCES-MIB::hrDeviceErrors.1029 0
+HOST-RESOURCES-MIB::hrDeviceErrors.1031 0
+HOST-RESOURCES-MIB::hrDeviceErrors.1032 0
+HOST-RESOURCES-MIB::hrProcessorFrwID.768 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrProcessorFrwID.769 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrProcessorFrwID.770 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrProcessorFrwID.771 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrProcessorFrwID.772 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrProcessorFrwID.773 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrProcessorFrwID.774 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrProcessorFrwID.775 SNMPv2-SMI::zeroDotZero
+HOST-RESOURCES-MIB::hrProcessorLoad.768 4
+HOST-RESOURCES-MIB::hrProcessorLoad.769 1
+HOST-RESOURCES-MIB::hrProcessorLoad.770 2
+HOST-RESOURCES-MIB::hrProcessorLoad.771 1
+HOST-RESOURCES-MIB::hrProcessorLoad.772 3
+HOST-RESOURCES-MIB::hrProcessorLoad.773 1
+HOST-RESOURCES-MIB::hrProcessorLoad.774 3
+HOST-RESOURCES-MIB::hrProcessorLoad.775 1
+

@@ -1,0 +1,2 @@
+HOST-RESOURCES-MIB::hrMemorySize.0 8172232 KBytes
+

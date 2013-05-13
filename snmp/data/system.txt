@@ -1,0 +1,8 @@
+HOST-RESOURCES-MIB::hrSystemUptime.0 2:11:40:12.37
+HOST-RESOURCES-MIB::hrSystemDate.0 2013-4-20,23:8:41.0,+8:0
+HOST-RESOURCES-MIB::hrSystemInitialLoadDevice.0 1536
+HOST-RESOURCES-MIB::hrSystemInitialLoadParameters.0 "BOOT_IMAGE=/vmlinuz-3.2.0-23-generic root=/dev/mapper/zqvg-lv_root ro quiet splash vt.handoff=7
+"
+HOST-RESOURCES-MIB::hrSystemNumUsers.0 7
+HOST-RESOURCES-MIB::hrSystemProcesses.0 177
+HOST-RESOURCES-MIB::hrSystemMaxProcesses.0 0
