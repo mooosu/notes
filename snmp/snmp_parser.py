@@ -38,6 +38,32 @@ class SnmpBaseObject:
     # hrSWRun
     name_pattern = (re.compile("Name\.(\d+)"),"name")
 
+    # IF-MIB
+    ifnumber_pattern = (re.compile("ifNumber.0"),"number")
+    ifindex_pattern   = (re.compile("ifIndex\.(\d+)"),"index")
+    ifdescr_pattern   = (re.compile("ifDescr\.(\d+)"),"descr")
+    iftype_pattern   = (re.compile("ifType\.(\d+)"),"iftype")
+    ifmtu_pattern   = (re.compile("ifMtu\.(\d+)"),"mtu")
+    ifspeed_pattern   = (re.compile("ifSpeed\.(\d+)"),"speed")
+    ifphys_address_pattern   = (re.compile("ifPhysAddress\.(\d+)"),"phys_address")
+    ifadmin_status_pattern   = (re.compile("ifAdminStatus\.(\d+)"),"admin_status")
+    ifoper_status_pattern   = (re.compile("ifOperStatus\.(\d+)"),"oper_status")
+
+    ifin_octets_pattern   = (re.compile("ifInOctets\.(\d+)"),"in_octets")
+    ifout_octets_pattern   = (re.compile("ifOutOctets\.(\d+)"),"out_octets")
+
+    ifin_ucast_pkts_pattern   = (re.compile("ifInUcastPkts\.(\d+)"),"in_ucast_pkts")
+    ifout_ucast_pkts_pattern   = (re.compile("ifOutUcastPkts\.(\d+)"),"out_ucast_pkts")
+
+    ifin_nucast_pkts_pattern   = (re.compile("ifInNUcastPkts\.(\d+)"),"in_nucast_pkts")
+    ifout_nucast_pkts_pattern   = (re.compile("ifOutNUcastPkts\.(\d+)"),"out_nucast_pkts")
+
+    ifin_discards_pattern   = (re.compile("ifInDiscards\.(\d+)"),"in_discards")
+    ifout_discards_pattern   = (re.compile("ifOutDiscards\.(\d+)"),"out_discards")
+
+    ifin_errors_pattern   = (re.compile("ifInErrors\.(\d+)"),"if_in_errors")
+    ifout_errors_pattern   = (re.compile("ifOutErrors\.(\d+)"),"if_out_errors")
+
 
     def __init__(self,line):
         self.line = line
@@ -49,6 +75,7 @@ class SnmpBaseObject:
             "memory_size" : lambda x: int(x.split(' ',1)[0]),
             "size" : lambda x: int(x),
             "type" : lambda x: x.split('::',1)[1],
+            "number" : lambda x: int(x),
         }
 
     def __str__(self):
@@ -60,7 +87,10 @@ class SnmpBaseObject:
     def parse(self,line=None):
         if line == None:
             line = self.line
-        name,value = line
+        if len(line) == 2:
+            name,value = line
+        else:
+            name,value = line[0],""
         for pattern , attr  in self.data_patterns:
             res = re.search(pattern,name)
             if res:
@@ -68,6 +98,7 @@ class SnmpBaseObject:
                 if converter:
                     value = converter(value)
                 setattr(self,attr,value)
+                break
 
 class SnmpSystem(SnmpBaseObject):
 
@@ -107,7 +138,7 @@ class SnmpStorage(SnmpBaseObject):
         self.data_patterns.append(SnmpBaseObject.size_pattern)
         self.data_patterns.append(SnmpBaseObject.used_pattern)
 
-    def total(self,readable):
+    def total(self,readable=False):
         total_bytes = self.allocation_units * self.size
         return total_bytes
 
@@ -155,6 +186,35 @@ class SnmpSWRun(SnmpBaseObject):
     def __repr__(self):
         return "repr:index: %s,name: %s" % ( self.index,self.name )
 
+class SnmpIF(SnmpBaseObject):
+    def __init__(self,line):
+        SnmpBaseObject.__init__(self,line)
+        self.data_patterns = [
+            SnmpBaseObject.ifnumber_pattern,
+            SnmpBaseObject.ifindex_pattern,
+            SnmpBaseObject.ifdescr_pattern,
+            SnmpBaseObject.iftype_pattern,
+            SnmpBaseObject.ifmtu_pattern,
+            SnmpBaseObject.ifspeed_pattern,
+            SnmpBaseObject.ifphys_address_pattern,
+            SnmpBaseObject.ifadmin_status_pattern,
+            SnmpBaseObject.ifoper_status_pattern,
+            SnmpBaseObject.ifin_octets_pattern,
+            SnmpBaseObject.ifout_octets_pattern,
+            SnmpBaseObject.ifin_ucast_pkts_pattern,
+            SnmpBaseObject.ifout_ucast_pkts_pattern,
+            SnmpBaseObject.ifin_nucast_pkts_pattern,
+            SnmpBaseObject.ifout_nucast_pkts_pattern,
+            SnmpBaseObject.ifin_discards_pattern,
+            SnmpBaseObject.ifout_discards_pattern,
+            SnmpBaseObject.ifin_errors_pattern,
+            SnmpBaseObject.ifout_errors_pattern
+        ]
+        self.data_patterns.append(SnmpBaseObject.name_pattern)
+
+    def __repr__(self):
+        return "repr:index: %s,descr: %s,type: %s,mtu: %s,speed: %s,phys_address: %s,admin_status: %s,oper_status: %s,in_octets: %s,out_octets: %s" % ( self.index,self.descr,self.index,self.mtu,self.speed,self.phys_address,self.admin_status,self.oper_status,self.in_octets,self.out_octets )
+
 class SnmpParser:
     def __init__(self):
         self.system_pattern = re.compile("hrSystem\w+\.(\d+)")
@@ -164,6 +224,7 @@ class SnmpParser:
         self.processor_pattern = re.compile("hrProcessor\w+\.(\d+)")
         self.fs_pattern = re.compile("hrFS\w+\.(\d+)")
         self.swrun_pattern = re.compile("hrSWRun\w+\.(\d+)")
+        self.if_pattern = re.compile("if\w+\.(\d+)")
         self.pattern_list= (
             (self.system_pattern, SnmpSystem),
             (self.memory_pattern, SnmpMemory),
@@ -172,6 +233,8 @@ class SnmpParser:
             (self.processor_pattern, SnmpDevice),
             (self.fs_pattern, SnmpFS),
             (self.swrun_pattern, SnmpSWRun),
+            (self.if_pattern, SnmpIF),
+
         )
 
         self.bytes_pattern = re.compile("(\d+) KBytes")
@@ -184,20 +247,6 @@ class SnmpParser:
 
         return None
 
-
-    def parse_bytes(line):
-        #"HOST-RESOURCES-MIB::hrSWRunPerfMem.1" , "1900 KBytes"
-
-        pass
-
-    def parse_type(line):
-        #"HOST-RESOURCES-MIB::hrStorageType.1" , "HOST-RESOURCES-MIB::hrStorageTypes.2"
-        pass
-    def parse_descr(line):
-        #"HOST-RESOURCES-MIB::hrStorageDescr.1" , "Physical memory"
-        pass
-
-
 class SnmpAnalyser:
     def __init__(self):
         self.objects= {
@@ -207,6 +256,7 @@ class SnmpAnalyser:
             SnmpDevice  : {},
             SnmpFS: {},
             SnmpSWRun: {},
+            SnmpIF: {},
         }
         self.parser = SnmpParser()
 
@@ -221,4 +271,5 @@ class SnmpAnalyser:
                 else:
                     obj = cls(line)
                     obj.parse()
-                    self.objects[cls][obj.index] = obj
+                    if not re.search("ifNumber\.(\d+)",line[0]):
+                        self.objects[cls][obj.index] = obj
