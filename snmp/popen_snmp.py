@@ -27,6 +27,7 @@ def read_snmp(hostname = "localhost",community="public"):
             break
     if pipe.returncode != 0:
         raise IOError(pipe.returncode,"".join(stderr))
+
 def read_from_file(file):
     f = open(file)
     try:
