@@ -1,0 +1,21 @@
+/$ou orgnization unit name
+-- group name
+   |
+   \----
+   |
+   \---- machine ip
+        |
+		\---- CPU
+		|
+		\---- Storage
+		|
+		\---- Network
+		|
+		\---- Process
+
+device_units:
+id,name,path,orgnization,group,created_at,updated_at
+name = host_name+"_"+ ip of eth0
+path = orgnization / group / name 
+orgnization = if not set use default server settings,the settings is given after server was installed
+group = if not set use default server settings
