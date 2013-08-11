@@ -22,12 +22,13 @@ def my_listener(state):
 
 
 zk.start()
-@zk.ChildrenWatch('/my/favorite')
+@zk.ChildrenWatch('/my')
 def my_func(children):
         print "Children are %s" % children
 
-# Ensure a path, create if necessary
-#zk.ensure_path("/my/favorite")
+zk.ensure_path("/my")
+zk.ensure_path("/my/n1")
+zk.ensure_path("/my/n2/n21")
 print("after zk.ensure_path")
 zk.stop()
 # Create a node with data

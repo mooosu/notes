@@ -1,1 +1,2 @@
 snmpbulkwalk -Oq -v3 -aSHA -uzqgame_snmpd -A85ae7c3c86b4205391521a8aa4d59f07d99e61a3 -lauthNoPriv 119.147.215.47  HOST-RESOURCES-MIB::host
+snmpbulkwalk -l authPriv -v3 -a SHA -u zqgame_snmpd -A "85ae7c3c86b4205391521a8aa4d59f07d99e61a3" -x DES -X "02e9ef627007c4dc17dca6f28b450e9d30da81f8"  58.68.237.24 HOST-RESOURCES-MIB::host
