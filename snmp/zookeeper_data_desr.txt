@@ -16,6 +16,10 @@
 device_units:
 id,name,path,orgnization,group,created_at,updated_at
 name = host_name+"_"+ ip of eth0
-path = orgnization / group / name 
+path = orgnization / group / name
 orgnization = if not set use default server settings,the settings is given after server was installed
 group = if not set use default server settings
+
+startup -> verify whether the machine is registered in server ,if so we use server config.
+registering -> get the machine name that consist of  hostname and the first ethernet ip and push to server
+monitoring -> 
