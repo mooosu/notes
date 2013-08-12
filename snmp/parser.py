@@ -1,16 +1,17 @@
 import os
 
-f = open("data/mib-2.txt")
-namespaces = {}
-prev_namespace = None
-for line in f:
-    fields = line.split("::",1)
-    if len(fields) == 2:
-        namespace,value = fields
-        if prev_namespace != namespace:
-            prev_namespace = namespace
-            namespaces[namespace] = {}
-        else:
+f = open("data/system.txt")
+def parse(data_in):
+    namespaces = {}
+    prev_namespace = None
+    import pdb;pdb.set_trace()
+    for line in data_in:
+        fields = line.split("::",1)
+        if len(fields) == 2:
+            namespace,value = fields
+            if prev_namespace != namespace:
+                prev_namespace = namespace
+                namespaces[namespace] = {}
             data = namespaces[namespace]
             # ifMtu.1  16436
             #    k       v
@@ -24,7 +25,5 @@ for line in f:
 
             if key_index not in key_data:
                 key_data[key_index] = v.strip()
-    else:
-        print "line:%s" % line
-
-print namespaces
+    return namespaces
+print parse(f)

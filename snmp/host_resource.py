@@ -1,4 +1,4 @@
-from snmp import Namespace
+from ns import Namespace
 class HostResource(object):
     _registered_objects = {}
     _indices = {}
@@ -22,81 +22,119 @@ class HostResource(object):
 Namespace.register(HostResource)
 
 class HostResourceObject(object):
-    name = None
+    def __init__(self,data):
+        self.strs = []
+        for key,v in data.items():
+            setattr(self,key,v)
+            self.strs.append("%s:%s" % ( key ,v ))
+
+    def __repr__(self):
+        return ','.join(self.strs) + "\n"
     @classmethod
     def register(self):
         HostResource.register(self)
+
+    @classmethod
+    def parse(self,data):
+        indcies = []
+        self.objects = []
+        for i in data[self.index]:
+            indcies.append(i)
+        for i in indcies:
+            pairs = {}
+            for key in self.keys:
+                pairs[key] = data[key].get(i,None)
+            obj = self(pairs)
+            self.objects.append(obj)
+
+        return self.objects
 
 class Device(HostResourceObject):
     name = "Device"
     index = "hrDeviceIndex"
     keys = ["hrDeviceType","hrDeviceDescr","hrDeviceID","hrDeviceStatus"]
-    def __init__(self):
-        self.objects = {}
-        self.processors = []
-        self.network_interfaces = []
+    subtypes = {}
+
+    @classmethod
+    def parse(self,data):
+        indcies = []
+        self.objects = []
+        for i in data[self.index]:
+            indcies.append(i)
+        for i in indcies:
+            pairs = {}
+            for key in self.keys:
+                pairs[key] = data[key].get(i,None)
+            device_type = pairs["hrDeviceType"]
+            klass = self.subtypes.get(device_type,None)
+            if not klass:
+                raise Exception("Unknown device type")
+            for key in klass.extra_keys:
+                pairs[key] = data[key].get(i,None)
+            obj = klass(pairs)
+            self.objects.append(obj)
+
+        return self.objects
+
+    @classmethod
+    def register_subtype(self):
+        devicet_type = "HOST-RESOURCES-TYPES::%s" % self.name
+        self.subtypes[devicet_type] = self
+
 
 Device.register()
 
-class Processor(Device):
-    name = "Processor"
+class hrDeviceProcessor(Device):
+    name = "hrDeviceProcessor"
     extra_keys = ["hrProcessorFrwID","hrProcessorLoad"]
-    def __init__(self):
-        pass
 
-Processor.register()
+hrDeviceProcessor.register_subtype()
 
-class NetworkInterface(Device):
-    name = "NetworkInterface"
+class hrDeviceCoprocessor(Device):
+    name = "hrDeviceCoprocessor"
+    extra_keys = []
+
+hrDeviceCoprocessor.register_subtype()
+
+class hrDeviceNetwork(Device):
+    name = "hrDeviceNetwork"
     extra_keys = ["hrDeviceErrors"]
-    def __init__(self):
-        pass
 
-NetworkInterface.register()
-
-class Fs(HostResourceObject):
-    name = "Fs"
+hrDeviceNetwork.register_subtype()
+class hrFs(HostResourceObject):
+    name = "hrFs"
     index = "hrFSIndex"
     keys = ["hrFSMountPoint","hrFSRemoteMountPoint","hrFSType","hrFSAccess","hrFSBootable","hrFSStorageIndex","hrFSLastFullBackupDate","hrFSLastPartialBackupDate"]
-    def __init__(self):
-        pass
 
-Fs.register()
+hrFs.register()
 
-class Memory(HostResourceObject):
-    name = "Memory"
+class hrMemory(HostResourceObject):
+    name = "hrMemory"
     index = "hrMemorySize"
-    def __init__(self):
-        pass
+    keys = ["hrMemorySize"]
 
-Memory.register()
+hrMemory.register()
 
-class Storage(HostResourceObject):
-    name = "Storage"
+class hrStorage(HostResourceObject):
+    name = "hrStorage"
     index = "hrStorageIndex"
     keys = ["hrStorageType","hrStorageDescr","hrStorageAllocationUnits","hrStorageSize","hrStorageUsed"]
-    def __init__(self):
-        pass
 
-Storage.register()
+hrStorage.register()
 
-class SWRun(HostResourceObject):
-    name = "SWRun"
+class hrSWRun(HostResourceObject):
+    name = "hrSWRun"
     index = "hrSWRunIndex"
     keys = ["hrSWRunName","hrSWRunID","hrSWRunPath","hrSWRunParameters","hrSWRunType","hrSWRunStatus","hrSWRunPerfCPU","hrSWRunPerfMem",]
-    def __init__(self):
-        pass
 
-SWRun.register()
+hrSWRun.register()
 
-class System(HostResourceObject):
-    name = "System"
+class hrSystem(HostResourceObject):
+    name = "hrSystem"
     index = "hrSystemUptime"
-    keys = ["hrSystemDate","hrSystemInitialLoadDevice","hrSystemInitialLoadParameters","hrSystemNumUsers","hrSystemProcesses","hrSystemMaxProcesses",]
-    def __init__(self):
-        pass
+    keys = ["hrSystemUptime","hrSystemDate","hrSystemInitialLoadDevice","hrSystemInitialLoadParameters","hrSystemNumUsers","hrSystemProcesses","hrSystemMaxProcesses",]
 
-System.register()
+hrSystem.register()
 if __name__ == "__main__":
     print HostResource._registered_objects
     print HostResource._indices
