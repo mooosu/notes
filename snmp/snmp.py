@@ -1,5 +1,5 @@
-import host_resource
 from ns import Namespace
+import hr,ifip
 class SnmpDataParser(object):
     def __init__(self):
         pass
@@ -8,9 +8,9 @@ class SnmpDataParser(object):
         for k,v in namespaces.items():
             ns = Namespace.find(k)
             values = namespaces[k]
-            for index,v in ns._indices.items():
+            for index,object_name in ns.get_indices().items():
                 if index in values:
-                    klass = ns._registered_objects[v]
+                    klass = ns.find(object_name)
                     print klass.parse(values)
 
     def parse_file(self,filename):
@@ -20,6 +20,10 @@ class SnmpDataParser(object):
         return namespaces
 
     def parse(self,data_in):
+        # ifMtu.1  16436
+        #    k       v
+        # IF-MIB::ifMtu.1 16436
+        # namespace key_name key_index value
         namespaces = {}
         prev_namespace = None
         for line in data_in:
@@ -30,18 +34,14 @@ class SnmpDataParser(object):
                     prev_namespace = namespace
                     namespaces[namespace] = {}
                 data = namespaces[namespace]
-                # ifMtu.1  16436
-                #    k       v
-                # IF-MIB::ifMtu.1 16436
-                # namespace key_name key_index value
-                k , v = value.split(' ',1)
+                tmp = value.strip().split(' ',1)
+                k , v = tmp if len( tmp ) == 2 else (tmp[0] , None)
                 key_name,key_index = k.split('.',1)
-                if key_name not in data:
-                    data[key_name] = {}
-                key_data = data[key_name]
-
+                key_data = data[key_name]={} if key_name not in data else data[key_name]
                 if key_index not in key_data:
-                    key_data[key_index] = v.strip()
+                    key_data[key_index] = v
+
         return namespaces
-import sys
-SnmpDataParser().load_file(sys.argv[1])
+if __name__ == "__main__":
+    import sys
+    SnmpDataParser().load_file(sys.argv[1])

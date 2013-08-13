@@ -1,24 +1,8 @@
-from ns import Namespace
-class HostResource(object):
-    _registered_objects = {}
-    _indices = {}
+from ns import Namespace,SnmpObject
+
+class HostResource(SnmpObject):
     namespace = "HOST-RESOURCES-MIB"
-    @classmethod
-    def get_objects():
-        return self._objects
 
-    @classmethod
-    def register(self,klass):
-        name = klass.name
-        if name in self._registered_objects:
-            if self._registered_objects[name] != klass:
-                raise "Conflict"
-        else:
-            self._registered_objects[name] = klass
-            self._indices[klass.index] = name
-
-    def __init__(self):
-        pass
 Namespace.register(HostResource)
 
 class HostResourceObject(object):
@@ -135,6 +119,7 @@ class hrSystem(HostResourceObject):
     keys = ["hrSystemUptime","hrSystemDate","hrSystemInitialLoadDevice","hrSystemInitialLoadParameters","hrSystemNumUsers","hrSystemProcesses","hrSystemMaxProcesses",]
 
 hrSystem.register()
+
 if __name__ == "__main__":
     print HostResource._registered_objects
     print HostResource._indices

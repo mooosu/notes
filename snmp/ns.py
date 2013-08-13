@@ -17,3 +17,28 @@ class Namespace(object):
     def find(self,namespace):
         return self._registered_namespaces[namespace]
 
+class SnmpObject(object):
+    _objects = {}
+    _indices = {}
+    namespace = "SnmpObject"
+    @classmethod
+    def get_objects(self):
+        return self._objects
+
+    @classmethod
+    def get_indices(self):
+        return self._indices
+
+    @classmethod
+    def find(self,snmp_object_name):
+        return self._objects[snmp_object_name]
+
+    @classmethod
+    def register(self,klass):
+        name = klass.name
+        if name in self._objects:
+            if self._objects[name] != klass:
+                raise "Conflict"
+        else:
+            self._objects[name] = klass
+            self._indices[klass.index] = name

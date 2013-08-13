@@ -1,10 +1,11 @@
 import os
+import sys
+from snmp import SnmpDataParser
 
-f = open("data/system.txt")
+f = open(sys.argv[1])
 def parse(data_in):
     namespaces = {}
     prev_namespace = None
-    import pdb;pdb.set_trace()
     for line in data_in:
         fields = line.split("::",1)
         if len(fields) == 2:
@@ -17,13 +18,14 @@ def parse(data_in):
             #    k       v
             # IF-MIB::ifMtu.1 16436
             # namespace key_name key_index value
-            k , v = value.split(' ',1)
+            tmp = value.strip().split(' ',1)
+            k , v = tmp if len( tmp ) == 2 else (tmp[0] , None)
             key_name,key_index = k.split('.',1)
-            if key_name not in data:
-                data[key_name] = {}
-            key_data = data[key_name]
-
+            key_data = data[key_name]={} if key_name not in data else data[key_name]
             if key_index not in key_data:
-                key_data[key_index] = v.strip()
+                key_data[key_index] = v
     return namespaces
-print parse(f)
+
+import sys
+import pdb;pdb.set_trace()
+print SnmpDataParser().parse(open(sys.argv[1]))
